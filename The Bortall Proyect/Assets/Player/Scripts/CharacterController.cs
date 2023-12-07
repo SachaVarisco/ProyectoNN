@@ -7,22 +7,24 @@ public class CharacterController : MonoBehaviour
     [Header("Movement")]
 
     public float speed;
-    
-    private bool lookingRight = true;
-    private Rigidbody2D rigidBody;
+    private bool LookingRight = true;
+    private bool LookingUp = false;
+    private Rigidbody2D RigidBody;
+    private Looking Looking;
 
 
-    [Header("Salto")]
+    [Header("Jump")]
 
     public float jumpForce;
     public LayerMask floorMask;
 
-    private BoxCollider2D boxCollider;
+    private BoxCollider2D BoxCollider;
     
     void Start()
     {
-        rigidBody = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        Looking = GetComponent<Looking>();
+        RigidBody = GetComponent<Rigidbody2D>();
+        BoxCollider = GetComponent<BoxCollider2D>();
     }
 
     
@@ -30,7 +32,6 @@ public class CharacterController : MonoBehaviour
     {
         CharacterMovement();
         Jump();
-        
     }
 
 
@@ -38,7 +39,7 @@ public class CharacterController : MonoBehaviour
     {
         //Movimiiento de personaje
         float horizontalMovement = Input.GetAxis("Horizontal");
-        rigidBody.velocity = new Vector2(horizontalMovement * speed, rigidBody.velocity.y);
+        RigidBody.velocity = new Vector2(horizontalMovement * speed, RigidBody.velocity.y);
 
         BodyOrientation(horizontalMovement);
     }
@@ -47,18 +48,18 @@ public class CharacterController : MonoBehaviour
     {
         //Cambio de orientacion del personaje
 
-        if((lookingRight == true && horizontalMovement < 0) || (lookingRight == false && horizontalMovement > 0))
+        if((LookingRight == true && horizontalMovement < 0) || (LookingRight == false && horizontalMovement > 0))
         {
-            lookingRight = !lookingRight;
+            LookingRight = !LookingRight;
             transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
         }
     }
 
     private void Jump()
     {
-        if(Input.GetKeyDown(KeyCode.W) && OnTheFloor())
+        if(Input.GetButtonDown("Jump") && OnTheFloor())
         {
-            rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            RigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
     }
 
@@ -68,7 +69,7 @@ public class CharacterController : MonoBehaviour
         //
         //Cuando vuelve a tocar el Layer de "Platforms", puede volver a saltar.
 
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, new Vector2(boxCollider.bounds.size.x, boxCollider.bounds.size.y), 0f, Vector2.down, 0.2f, floorMask);
+        RaycastHit2D raycastHit = Physics2D.BoxCast(BoxCollider.bounds.center, new Vector2(BoxCollider.bounds.size.x, BoxCollider.bounds.size.y), 0f, Vector2.down, 0.2f, floorMask);
         return raycastHit.collider != null;
     }
 }
