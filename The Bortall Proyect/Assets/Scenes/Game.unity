@@ -440,11 +440,11 @@ Transform:
   m_GameObject: {fileID: 328068463}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.600605, y: 7.2461967, z: 7.247859}
+  m_LocalPosition: {x: -16.598076, y: 12.362097, z: -2.752141}
   m_LocalScale: {x: 7.1607, y: 7.1607, z: 7.1607}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 519420032}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &328068465
 PolygonCollider2D:
@@ -741,7 +741,7 @@ MonoBehaviour:
   m_ScreenY: 0.5
   m_CameraDistance: 10
   m_DeadZoneWidth: 0.07
-  m_DeadZoneHeight: 0.14
+  m_DeadZoneHeight: 0.36
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 1
   m_SoftZoneWidth: 0.94
@@ -856,7 +856,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1938963664}
-  - {fileID: 328068464}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &519420033
@@ -2913,3 +2912,4 @@ SceneRoots:
   - {fileID: 904895758}
   - {fileID: 357106538}
   - {fileID: 356703791}
+  - {fileID: 328068464}
