@@ -12,6 +12,9 @@ public class CharacterController : MonoBehaviour
     private Rigidbody2D RigidBody;
     private Looking Looking;
 
+    [Header("Dash")]
+    private DashPlayer DashPlayer;
+
 
     [Header("Jump")]
 
@@ -25,12 +28,17 @@ public class CharacterController : MonoBehaviour
         Looking = GetComponent<Looking>();
         RigidBody = GetComponent<Rigidbody2D>();
         BoxCollider = GetComponent<BoxCollider2D>();
+        DashPlayer = GetComponent<DashPlayer>();
     }
 
     
     void Update()
     {
-        CharacterMovement();
+        if (DashPlayer.MoveIsTrue)
+        {
+            CharacterMovement();
+        }
+        
         Jump();
     }
 
