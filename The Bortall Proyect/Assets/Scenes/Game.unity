@@ -453,7 +453,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 328068463}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -796,7 +796,7 @@ Transform:
   m_GameObject: {fileID: 468025832}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9, y: 0.04, z: 0}
+  m_LocalPosition: {x: 1.69, y: 0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1327,9 +1327,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletController: {fileID: 468025833}
-  bullet: {fileID: 2191183425182782772, guid: 546694207c5ca7f45b99330407965008, type: 3}
+  bulletPrefab: {fileID: 2191183425182782772, guid: 546694207c5ca7f45b99330407965008, type: 3}
   reloadTime: 5
   countdown: 0
+  bulletSpeed: 35
   impulse: 20
 --- !u!1 &782593932
 GameObject:

@@ -8,7 +8,6 @@ public class CharacterController : MonoBehaviour
 
     public float speed;
     private bool LookingRight = true;
-    private bool LookingUp = false;
     private Rigidbody2D RigidBody;
     private Looking Looking;
     public bool moveIsTrue = true;
@@ -18,7 +17,6 @@ public class CharacterController : MonoBehaviour
 
     public float jumpForce;
     public LayerMask floorMask;
-
     private BoxCollider2D BoxCollider;
     
     void Start()
