@@ -20,23 +20,28 @@ public class MeleeAttack : MonoBehaviour
     [Header("Watch")]
     private Looking Looking;
     private Vector3 MeleePosition;
-    private void Start() {
+    private void Start() 
+    {
         Looking = GetComponent<Looking>();
         SpriteRenderer = transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>();
     }
-    private void Update() {
+    private void Update() 
+    {
         if (Input.GetButtonDown("Fire1") && TimeNextAttack <= 0)
         {
             Attack();
             TimeNextAttack = Cooldown;
         }
     }
-    private void FixedUpdate() {
-        if(TimeNextAttack > 0){
+    private void FixedUpdate() 
+    {
+        if(TimeNextAttack > 0)
+        {
             TimeNextAttack -= Time.deltaTime;
         }
     }
-    private void Attack(){
+    private void Attack()
+    {
         ChangePosition();
         StartCoroutine(Alpha());
         Collider2D[] objects = Physics2D.OverlapCircleAll(MeleeController.position, MeleeRadius);
@@ -45,22 +50,25 @@ public class MeleeAttack : MonoBehaviour
         {
             if (collider.CompareTag("Enemy"))
             {
-                collider.gameObject.SetActive(false);
+                collider.GetComponent<EnemyStats>().TakeDamage(MeleeDamage);
             }
         }
     }
-    private void OnDrawGizmos() {
+    private void OnDrawGizmos() 
+    {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(MeleeController.position, MeleeRadius);
     }
 
-    private IEnumerator Alpha(){
+    private IEnumerator Alpha()
+    {
         SpriteRenderer.color = new Color(255f, 146f, 0f, 0.45f);
         yield return new WaitForSeconds(0.05f);
         SpriteRenderer.color = new Color(255f, 146f, 0f, 0f);
     }
 
-    private void ChangePosition(){
+    private void ChangePosition()
+    {
         switch (Looking.direction)
         {
             case "Up":

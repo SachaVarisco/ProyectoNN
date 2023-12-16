@@ -23,10 +23,4 @@ public class CombatPlayer : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-   
-    void Update()
-    {
-        
-    }
 }

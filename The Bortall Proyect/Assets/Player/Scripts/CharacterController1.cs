@@ -11,9 +11,7 @@ public class CharacterController : MonoBehaviour
     private bool LookingUp = false;
     private Rigidbody2D RigidBody;
     private Looking Looking;
-
-    [Header("Dash")]
-    private DashPlayer DashPlayer;
+    public bool moveIsTrue = true;
 
 
     [Header("Jump")]
@@ -28,13 +26,12 @@ public class CharacterController : MonoBehaviour
         Looking = GetComponent<Looking>();
         RigidBody = GetComponent<Rigidbody2D>();
         BoxCollider = GetComponent<BoxCollider2D>();
-        DashPlayer = GetComponent<DashPlayer>();
     }
 
     
     void Update()
     {
-        if (DashPlayer.MoveIsTrue)
+        if (moveIsTrue)
         {
             CharacterMovement();
         }
@@ -59,7 +56,8 @@ public class CharacterController : MonoBehaviour
         if((LookingRight == true && horizontalMovement < 0) || (LookingRight == false && horizontalMovement > 0))
         {
             LookingRight = !LookingRight;
-            transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180 , 0);
+            //transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
         }
     }
 

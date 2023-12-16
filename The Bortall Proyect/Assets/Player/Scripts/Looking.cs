@@ -19,6 +19,7 @@ public class Looking : MonoBehaviour
         if (HorizontalMove < 0)
         {
             direction = "Left";
+            
         }else if (HorizontalMove > 0)
         {
             direction = "Right";
@@ -26,6 +27,7 @@ public class Looking : MonoBehaviour
         if (VerticalMove < 0)
         {
             direction = "Down";
+
         }else if (VerticalMove > 0)
         {
             direction = "Up";

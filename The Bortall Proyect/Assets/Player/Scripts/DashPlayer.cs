@@ -13,7 +13,6 @@ public class DashPlayer : MonoBehaviour
     [SerializeField] private float TimeDash;
     private float GravityStart;
     private bool DashIsTrue = true;
-    public bool MoveIsTrue = true;
     [SerializeField] private TrailRenderer TrailRenderer;
     void Start()
     {
@@ -32,7 +31,7 @@ public class DashPlayer : MonoBehaviour
 
     private IEnumerator Dash(){
 
-        MoveIsTrue = false;
+        characterController.moveIsTrue = false;
         DashIsTrue = false;
         RigidBody.gravityScale = 0;
         RigidBody.velocity = new Vector2(VelocityDash * transform.localScale.x, 0);
@@ -40,7 +39,7 @@ public class DashPlayer : MonoBehaviour
 
         yield return new WaitForSeconds(TimeDash);
 
-        MoveIsTrue = true;
+        characterController.moveIsTrue = true;
         DashIsTrue = true;
         RigidBody.gravityScale = GravityStart;
         TrailRenderer.emitting = false;

@@ -50,7 +50,8 @@ public class Patroll : MonoBehaviour
 
         return VelocityX;
     }
-    private void RotateX(){
+    private void RotateX()
+    {
         LookLeft = !LookLeft;
         transform.localScale = new Vector2(transform.localScale.x, -transform.localScale.y);
     }
