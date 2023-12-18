@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class DashPlayer : MonoBehaviour
 {
-    private CharacterController characterController;
+
     private Rigidbody2D RigidBody;
+    private PlayerUtils utils;
     
 
     [Header("Dash")]
@@ -16,7 +17,7 @@ public class DashPlayer : MonoBehaviour
     [SerializeField] private TrailRenderer TrailRenderer;
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        utils = GetComponent<PlayerUtils>();
         RigidBody = GetComponent<Rigidbody2D>();
         GravityStart = RigidBody.gravityScale;
     }
@@ -31,7 +32,7 @@ public class DashPlayer : MonoBehaviour
 
     private IEnumerator Dash(){
 
-        characterController.moveIsTrue = false;
+        utils.moveIsTrue = false;
         DashIsTrue = false;
         RigidBody.gravityScale = 0;
         RigidBody.velocity = new Vector2(VelocityDash * transform.localScale.x, 0);
@@ -39,7 +40,7 @@ public class DashPlayer : MonoBehaviour
 
         yield return new WaitForSeconds(TimeDash);
 
-        characterController.moveIsTrue = true;
+        utils.moveIsTrue = true;
         DashIsTrue = true;
         RigidBody.gravityScale = GravityStart;
         TrailRenderer.emitting = false;

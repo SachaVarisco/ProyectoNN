@@ -24,10 +24,4 @@ public class LifeBar : MonoBehaviour
         ChangeHPMax(HPAmount);
         ChangeHPActual(HPAmount);
     }
-
-    
-    void Update()
-    {
-        
-    }
 }

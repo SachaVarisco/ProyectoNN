@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
+    [Header("Stats")]
+
+    private PlayerUtils utils;
+
     [Header("Movement")]
 
-    public float speed;
     private bool LookingRight = true;
     private Rigidbody2D RigidBody;
     private Looking Looking;
-    public bool moveIsTrue = true;
 
 
     [Header("Jump")]
@@ -24,12 +26,13 @@ public class CharacterController : MonoBehaviour
         Looking = GetComponent<Looking>();
         RigidBody = GetComponent<Rigidbody2D>();
         BoxCollider = GetComponent<BoxCollider2D>();
+        utils = GetComponent<PlayerUtils>();
     }
 
     
     void Update()
     {
-        if (moveIsTrue)
+        if (utils.moveIsTrue)
         {
             CharacterMovement();
         }
@@ -42,7 +45,7 @@ public class CharacterController : MonoBehaviour
     {
         //Movimiiento de personaje
         float horizontalMovement = Input.GetAxis("Horizontal");
-        RigidBody.velocity = new Vector2(horizontalMovement * speed, RigidBody.velocity.y);
+        RigidBody.velocity = new Vector2(horizontalMovement * utils.speed, RigidBody.velocity.y);
 
         BodyOrientation(horizontalMovement);
     }

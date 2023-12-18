@@ -11,18 +11,16 @@ public class RangeAttack : MonoBehaviour
     [SerializeField] private float reloadTime;
     [SerializeField] private float countdown;
     [SerializeField] private float bulletSpeed;
-    private float moveX;
-    private float moveY;
+
 
     [Header("Recoil")]
     private Looking Looking;
     private Rigidbody2D rigidBody;
-    private CharacterController characterController;
-    [SerializeField] private float impulse;
+    private PlayerUtils utils;
 
     private void Start() 
     {
-        characterController = GetComponent<CharacterController>();
+        utils = GetComponent<PlayerUtils>();
         rigidBody = GetComponent<Rigidbody2D>();
         Looking = GetComponent<Looking>();
     }
@@ -54,19 +52,19 @@ public class RangeAttack : MonoBehaviour
         {
             case "Up":
                 bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0 , 1 * bulletSpeed);
-                rigidBody.AddForce(Vector2.down * (impulse/3), ForceMode2D.Impulse);
+                rigidBody.AddForce(Vector2.down * (utils.impulse/3), ForceMode2D.Impulse);
                 break;
             case "Down":
                 bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0 , -1 * bulletSpeed);
-                rigidBody.AddForce(Vector2.up * (impulse/3), ForceMode2D.Impulse);
+                rigidBody.AddForce(Vector2.up * (utils.impulse/3), ForceMode2D.Impulse);
                 break;
             case "Left":
                 bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(-1 * bulletSpeed, 0);
-                rigidBody.AddForce(Vector2.right * impulse, ForceMode2D.Impulse);
+                rigidBody.AddForce(Vector2.right * utils.impulse, ForceMode2D.Impulse);
                 break;
             case "Right":
                 bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(1 * bulletSpeed, 0);
-                rigidBody.AddForce(Vector2.left * impulse, ForceMode2D.Impulse);
+                rigidBody.AddForce(Vector2.left * utils.impulse, ForceMode2D.Impulse);
                 break;
             default:
                 break;
@@ -76,12 +74,12 @@ public class RangeAttack : MonoBehaviour
 
     IEnumerator NullMove()
     {
-        characterController.moveIsTrue = false;
+        utils.moveIsTrue = false;
         rigidBody.gravityScale = 0;
 
         yield return new WaitForSeconds(0.1f);
 
-        characterController.moveIsTrue = true;
+        utils.moveIsTrue = true;
         rigidBody.gravityScale = 1;
     }
 

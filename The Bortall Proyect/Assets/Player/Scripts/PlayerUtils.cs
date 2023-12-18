@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CombatPlayer : MonoBehaviour
+public class PlayerUtils : MonoBehaviour
 {
-    [SerializeField] private float Life;
-    [SerializeField] private float LifeMax;
+    [Header("Stats")]
 
-    [SerializeField] private LifeBar LifeBar;
+    public float speed;
+    public bool moveIsTrue = true;
+    public float impulse;
+    public float Life;
+    public float LifeMax;
+    public LifeBar LifeBar;
+    
     private void Start()
     {
         Life = LifeMax;

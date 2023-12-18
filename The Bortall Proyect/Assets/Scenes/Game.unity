@@ -1045,11 +1045,11 @@ GameObject:
   - component: {fileID: 762683162}
   - component: {fileID: 762683166}
   - component: {fileID: 762683167}
+  - component: {fileID: 762683174}
   - component: {fileID: 762683168}
   - component: {fileID: 762683169}
   - component: {fileID: 762683170}
   - component: {fileID: 762683171}
-  - component: {fileID: 762683172}
   - component: {fileID: 762683173}
   m_Layer: 0
   m_Name: Player
@@ -1278,8 +1278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 158d59d44c3b57b4781a4bbb46f9c8f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  moveIsTrue: 1
   jumpForce: 15
   floorMask:
     serializedVersion: 2
@@ -1299,21 +1297,6 @@ MonoBehaviour:
   VelocityDash: 20
   TimeDash: 0.4
   TrailRenderer: {fileID: 1207613628}
---- !u!114 &762683172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 762683161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15718ef9959f70247a13ae38de59d7c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Life: 0
-  LifeMax: 100
-  LifeBar: {fileID: 1844370429}
 --- !u!114 &762683173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1331,7 +1314,24 @@ MonoBehaviour:
   reloadTime: 5
   countdown: 0
   bulletSpeed: 35
+--- !u!114 &762683174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762683161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7010e08201b32b0488912bcb6519770c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  moveIsTrue: 1
   impulse: 20
+  Life: 100
+  LifeMax: 100
+  LifeBar: {fileID: 1844370429}
 --- !u!1 &782593932
 GameObject:
   m_ObjectHideFlags: 0

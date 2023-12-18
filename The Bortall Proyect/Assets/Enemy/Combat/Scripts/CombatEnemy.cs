@@ -18,7 +18,7 @@ public class CombatEnemy : MonoBehaviour
 
             if (TimeNextDamage <= 0)
             {
-                other.gameObject.GetComponent<CombatPlayer>().TakeDamage(damage);
+                other.gameObject.GetComponent<PlayerUtils>().TakeDamage(damage);
                 TimeNextDamage = TimeBetweenDamage;
             }
 
