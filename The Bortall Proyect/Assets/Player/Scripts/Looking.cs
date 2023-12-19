@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Looking : MonoBehaviour
 {
+    [Header("Dash")]
+    private DashPlayer DashPlayer;
+
     [Header("Direction")]
     public string direction;
     
+    private void Start(){
+        DashPlayer = GetComponent<DashPlayer>();
+    }
     void Update()
     {
         CharacterView();
@@ -19,10 +25,12 @@ public class Looking : MonoBehaviour
         if (HorizontalMove < 0)
         {
             direction = "Left";
+            DashPlayer.dashDirection = -1f;
             
         }else if (HorizontalMove > 0)
         {
             direction = "Right";
+            DashPlayer.dashDirection = 1f;
         }
         if (VerticalMove < 0)
         {

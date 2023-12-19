@@ -15,6 +15,10 @@ public class PlayerUtils : MonoBehaviour
     
     private void Start()
     {
+        speed = 10;
+        impulse = 20;
+        LifeMax = 100;
+
         Life = LifeMax;
         //LifeBar.StartLifeBar(Life);
     }
